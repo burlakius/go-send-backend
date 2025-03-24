@@ -1,0 +1,4 @@
+config/dev.yaml
+config/local.yaml
+config/prod.yaml
+**/logs/
