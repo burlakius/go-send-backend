@@ -1,9 +1,7 @@
 package config
 
 import (
-	"flag"
 	"log"
-	"os"
 	"time"
 
 	"github.com/ilyakaznacheev/cleanenv"
@@ -27,15 +25,10 @@ type HTTPServer struct {
 	IdleTimeout time.Duration `yaml:"idle_timeout"`
 }
 
-func MustLoad() *Config {
-	configPath := flag.String("-c", "./config/dev.yaml", "PATH TO CONFIG FILE")
-	if _, err := os.Stat(*configPath); os.IsNotExist(err) {
-		log.Fatalf("Cannot load configuration file: File does not exist\nPath: %s\n", *configPath)
-	}
-
+func MustLoad(configFilePath *string) *Config {
 	var cfg Config
 
-	if err := cleanenv.ReadConfig(*configPath, &cfg); err != nil {
+	if err := cleanenv.ReadConfig(*configFilePath, &cfg); err != nil {
 		log.Fatalf("Cannot read configuration file: %s\n", err)
 	}
 
