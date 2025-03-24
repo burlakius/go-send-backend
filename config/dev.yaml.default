@@ -1,0 +1,11 @@
+env: "dev"
+
+database:
+  address: "127.0.0.1" #localhost
+  post: "" #TODO
+
+http_server:
+  address: "127.0.0.1" #localhost
+  post: "" #TODO
+  timeout: 4s
+  idle_timeout: 60s
